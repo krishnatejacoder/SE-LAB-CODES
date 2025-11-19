@@ -1,0 +1,26 @@
+ngrok install
+
+✔ Install ngrok
+
+Download: https://ngrok.com/download
+
+Extract ZIP
+
+Move ngrok.exe to Desktop or any folder you prefer
+
+IMPORTANT: Add your ngrok auth token
+
+Copy from:
+https://dashboard.ngrok.com/get-started/your-authtoken
+
+Run in CMD:
+
+ngrok config add-authtoken <your_token>
+
+
+Done.
+
+
+
+
+
