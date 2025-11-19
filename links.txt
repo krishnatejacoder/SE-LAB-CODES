@@ -3,3 +3,11 @@ https://www.awsacademy.com/vforcesite/LMS_Login
 
 EC2:
 https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Home:
+
+ngrok steps:
+
+https://dashboard.ngrok.com/get-started/your-authtoken
+
+ngrok config add-authtoken 35bSTH6us3BzkgOXdKHuBbMB6gO_6PqGwcFHNZN7Ub6hS87WX
+
+ngrok http 8085
