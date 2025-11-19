@@ -1,0 +1,151 @@
+📌 2. Exposed Jenkins Publicly Using ngrok
+
+To allow GitHub Webhooks to reach your local Jenkins.
+
+You ran:
+
+ngrok http 8085
+
+ngrok generated:
+
+https://kaliyah-unspellable-unanachronistically.ngrok-free.dev
+
+This became your temporary public Jenkins URL.
+
+
+---
+
+📌 3. Created GitHub Webhook
+
+In your GitHub repo → Settings → Webhooks:
+
+You added:
+
+https://kaliyah-unspellable-unanachronistically.ngrok-free.dev/github-webhook/
+
+✔ Correct endpoint
+✔ HTTPS
+✔ Push event selected
+
+Webhook successfully delivered events to Jenkins.
+
+
+---
+
+📌 4. Created a Jenkins Freestyle Job
+
+Your job name (example):
+
+MavenWeb_Build
+
+Inside the job:
+
+✔ Source Code Management (Git)
+
+Repo URL set to:
+
+https://github.com/krishnatejacoder/Smart-Assessment-Hub
+
+✔ Build Trigger
+
+Enabled:
+
+GitHub hook trigger for GITScm polling
+
+✔ Build Steps
+
+Used Maven build:
+
+mvn clean install
+
+Jenkins downloaded your repo, ran Maven, built the WAR file:
+
+BUILD SUCCESS
+
+
+---
+
+📌 5. Confirmed Webhook Worked
+
+Jenkins console showed:
+
+Started by GitHub push
+Triggering build...
+
+Meaning:
+
+GitHub → ngrok → Jenkins SUCCESS.
+
+
+---
+
+📌 6. Configured Jenkins Global Email (SMTP)
+
+In:
+
+Manage Jenkins → Configure System → E-mail Notification
+
+You configured Gmail:
+
+SMTP server: smtp.gmail.com
+Port: 465
+Use SSL: yes
+Authentication: yes
+Username: krishnadar05@gmail.com
+Password: Gmail App Password
+
+Test email:
+
+✔ “Email was successfully sent”
+
+SMTP 100% working.
+
+
+---
+
+📌 7. Added Build Emails to Job
+
+In:
+
+Post-build Actions
+
+You added Editable Email Notification (emailext plugin).
+
+Configured:
+
+✔ Recipient = your Gmail
+✔ Triggers:
+
+Success
+
+Failure
+
+Unstable
+
+
+Now Jenkins sends:
+
+📩 Build SUCCESS
+📩 Build FAILED
+📩 Unstable build
+
+You received the failure email (confirmed).
+
+
+---
+
+📌 8. Final Pipeline Achieved
+
+✔ GitHub commit →
+
+✔ Webhook triggers Jenkins →
+
+✔ ngrok tunnels to local Jenkins →
+
+✔ Jenkins fetches repo →
+
+✔ Jenkins runs Maven →
+
+✔ Creates .war file →
+
+✔ Sends email notification (SUCCESS / FAILURE)
