@@ -2,17 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'MAVEN-HOME'
+        maven 'MAVEN_HOME'   // Correct name
     }
 
     stages {
 
         stage('Clone Repo') {
             steps {
-                // Delete old folder if exists
                 bat 'if exist Smart-Assessment-Hub rmdir /S /Q Smart-Assessment-Hub'
-
-                // Clone GitHub repo
                 bat 'git clone https://github.com/krishnatejacoder/Smart-Assessment-Hub'
             }
         }
