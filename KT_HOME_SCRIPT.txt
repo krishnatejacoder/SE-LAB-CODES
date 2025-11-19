@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'MAVEN_HOME'
+    }
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                bat 'if exist KT-HOME rmdir /S /Q KT-HOME'
+                bat 'git clone https://github.com/krishnatejacoder/KT-HOME'
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                bat 'mvn -f KT-HOME/pom.xml clean'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                bat 'mvn -f KT-HOME/pom.xml install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn -f KT-HOME/pom.xml test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                bat 'mvn -f KT-HOME/pom.xml package'
+            }
+        }
+    }
+}
